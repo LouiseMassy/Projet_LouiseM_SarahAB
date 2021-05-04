@@ -6,7 +6,9 @@ def gravitational_force(pos1, mass1, pos2, mass2):
     """ Return the force applied to a body in pos1 with mass1
         by a body in pos2 with mass2
     """
-    raise NotImplementedError
+    dist2 = (pos2[0]-pos1[0])^2+(pos2[1]-pos1[1])^2
+    return G*mass1*mass2/dist2
+    #raise NotImplementedError
 
 
 class IEngine:
