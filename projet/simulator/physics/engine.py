@@ -41,4 +41,22 @@ class IEngine:
 
 
 class DummyEngine(IEngine):
-    pass
+    def __init__(self, world):
+        self.world = world
+        
+    def derivatives(self, t0, y0): 
+        #récupération des masses
+        masses=[]
+        n=len(y0)/4
+        for i in range (n) :
+            for body in self.world : 
+                if (y0[2*i]==body.position[0]) and (y0[2*i+1]==body.position[1]):
+                    masses.append(body.mass)
+                    
+        res=[]
+        for i in range (2*n):
+            res.append(y0[2*n+i])
+            
+        
+   # def make_solver_state(self):
+        
