@@ -58,10 +58,17 @@ class DummyEngine(IEngine):
         res=[]
         for i in range (2*n):
             res.append(y0[2*n+i])
-        for i in range (2*n):
-            for body in self.world : 
-                res.append((1/masses[i])*)
-            
+        for i in range (n):   #on calcule les accélérations ai
+            sommeX=0
+            sommeY=0
+            for j in range(n):    #somme des forces extérieures
+                if i != j :
+                    forceX = gravitational_force([y0[2*i], y0[2*i+1]], masses[i], [y0[2*j], y0[2*j+1]], masses[j])[0]
+                    sommeX = sommeX + forceX
+                    forceY = gravitational_force([y0[2*i], y0[2*i+1]], masses[i], [y0[2*j], y0[2*j+1]], masses[j])[0]
+                    sommeY = sommeY + forceY
+            res.append(sommeX / masses[i])
+            res.append(sommeY / masses[i])
         
    # def make_solver_state(self):
         
