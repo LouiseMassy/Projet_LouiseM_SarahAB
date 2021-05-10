@@ -3,7 +3,7 @@ from .constants import G
 
 
 def gravitational_force(pos1, mass1, pos2, mass2):
-    """ Return the force applied to a body in pos1 with mass1
+    """ Return the force applied to a bodyVector in pos1 with mass1
         by a body in pos2 with mass2
     """
     dist2 = (pos2[0]-pos1[0])^2+(pos2[1]-pos1[1])^2
@@ -58,6 +58,9 @@ class DummyEngine(IEngine):
         res=[]
         for i in range (2*n):
             res.append(y0[2*n+i])
+        for i in range (2*n):
+            for body in self.world : 
+                res.append((1/masses[i])*)
             
         
    # def make_solver_state(self):
