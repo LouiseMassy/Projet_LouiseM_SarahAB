@@ -70,5 +70,7 @@ class DummyEngine(IEngine):
             res.append(sommeX / masses[i])
             res.append(sommeY / masses[i])
         
+        return(res)
+        
    # def make_solver_state(self):
         
