@@ -72,7 +72,7 @@ class DummyEngine(IEngine):
         
         return(res)
         
-   def make_solver_state(self):
+    def make_solver_state(self):
        y0=[]
        for body in self.world :
            y0.append(body.position[0])
