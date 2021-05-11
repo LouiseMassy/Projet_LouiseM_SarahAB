@@ -73,14 +73,13 @@ class DummyEngine(IEngine):
         return(res)
         
    def make_solver_state(self):
-<<<<<<< HEAD
-=======
-       """ Returns the state given to the solver, it is the vector y in
-                y' = f(t, y)
-            In our case, it is the vector containing the 
-            positions and speeds of all our bodies:
-                [x1, y1, x2, y2, ..., xn, yn, vx1, vy1, vx2, vy2, ..., vxn, vyn]
-            where xi, yi are the positions and vxi, vyi are the velocities.
-        """
->>>>>>> 217b2e0e2cd7a0b2bc5e5cdd59d83162325ca310
+       y0=[]
+       for body in self.world :
+           y0.append(body.position[0])
+           y0.append(body.position[1])
+           y0.append(body.velocity[0])
+           y0.append(body.velocity[1])
+       return y0
+   
+    
         
