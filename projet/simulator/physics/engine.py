@@ -13,7 +13,7 @@ def gravitational_force(pos1, mass1, pos2, mass2):
     #raise NotImplementedError
 
 
-class IEngine:
+class IEngine:                  #SQUELETTE
     def __init__(self, world):
         self.world = world
 
@@ -72,5 +72,12 @@ class DummyEngine(IEngine):
         
         return(res)
         
-   # def make_solver_state(self):
+   def make_solver_state(self):
+       """ Returns the state given to the solver, it is the vector y in
+                y' = f(t, y)
+            In our case, it is the vector containing the 
+            positions and speeds of all our bodies:
+                [x1, y1, x2, y2, ..., xn, yn, vx1, vy1, vx2, vy2, ..., vxn, vyn]
+            where xi, yi are the positions and vxi, vyi are the velocities.
+        """
         
