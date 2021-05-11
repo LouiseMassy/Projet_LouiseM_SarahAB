@@ -72,5 +72,5 @@ class DummyEngine(IEngine):
         
         return(res)
         
-   # def make_solver_state(self):
+   def make_solver_state(self):
         
