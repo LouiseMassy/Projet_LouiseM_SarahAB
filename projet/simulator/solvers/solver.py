@@ -29,10 +29,11 @@ class ISolver:
 
 class DummySolver(ISolver):
     def __init__(self, f, t0, y0, max_step_size=0.01):
-        self.f = f
+        self.f = f  #DERIVATIVES ??
         self.t0 = t0
         self.y0 = y0
         self.max_step_size = max_step_size
 
     def integrate(self, t):
-        
+        #FAUT CHANGER t LÀ ? 
+        return self.y0 + self.max_step_size * self.f(t, self.y0)
