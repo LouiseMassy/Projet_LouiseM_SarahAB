@@ -77,6 +77,7 @@ class DummyEngine(IEngine):
        for body in self.world :
            y0.append(body.position[0])
            y0.append(body.position[1])
+       for body in self.world :
            y0.append(body.velocity[0])
            y0.append(body.velocity[1])
        return y0
