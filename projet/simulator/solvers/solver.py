@@ -1,3 +1,4 @@
+from math import *
 class SolverError(Exception):
     pass
 
@@ -29,15 +30,15 @@ class ISolver:
 
 class DummySolver(ISolver):
     def __init__(self, f, t0, y0, max_step_size=0.01):
-        self.f = f  #DERIVATIVES ??
+        self.f = f  
         self.t0 = t0
         self.y0 = y0
         self.max_step_size = max_step_size
 
     def integrate(self, t):
-        n=(t-self.t0)/self.max_step_size
+        n=floor((t-self.t0)/self.max_step_size)
         s=0
         for i in range(n-1):
-            s=s+self.y0 + self.max_step_size * self.f(self.t0+i*self.max_step_size, self.y0)
-        s=s+self.y0 + self.max_step_size * self.f(t, self.y0)
+            s= s + self.max_step_size * self.f(self.t0+i*self.max_step_size, self.y0)
+        s=s + self.max_step_size * self.f(t, self.y0)
         return s
