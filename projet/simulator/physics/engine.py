@@ -9,8 +9,8 @@ def gravitational_force(pos1, mass1, pos2, mass2):
     norme_carre = Vector.sqrnorm(Vector.__sub__(pos1,pos2))
     normeF=G*mass1*mass2/norme_carre
     norme = Vector.norm(Vector.__sub__(pos1,pos2))
-    vecteur_directeur=[(pos2[0]-pos1[0])/norme,(pos2[1]-pos1[1])/norme]
-    return [normeF*vecteur_directeur[0],normeF*vecteur_directeur[1]] 
+    vecteur_directeur=Vector2((pos2[0]-pos1[0])/norme,(pos2[1]-pos1[1])/norme)
+    return Vector2(normeF*vecteur_directeur[0],normeF*vecteur_directeur[1])
     #raise NotImplementedError
 
 
