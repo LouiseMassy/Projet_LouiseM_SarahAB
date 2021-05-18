@@ -9,7 +9,7 @@ def gravitational_force(pos1, mass1, pos2, mass2):
     dist2 = (pos2[0]-pos1[0])^2+(pos2[1]-pos1[1])^2
     normeF=G*mass1*mass2/dist2
     vecteur_directeur=[(pos2[0]-pos1[0])/Vector.norm(Vector.__sub__(pos1,pos2)),(pos2[1]-pos1[1])/Vector.norm(Vector.__sub__(pos1,pos2))]
-    return [normeF*vecteur_directeur[0],normeF*vecteur_directeur[1]] #vecteur ou pas vecteur ?
+    return [normeF*vecteur_directeur[0],normeF*vecteur_directeur[1]] 
     #raise NotImplementedError
 
 
