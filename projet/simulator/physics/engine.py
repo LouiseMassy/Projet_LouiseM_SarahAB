@@ -83,8 +83,7 @@ class DummyEngine(IEngine):
             sommeY=0
             for j in range(n):    #somme des forces extérieures
                 if i != j :
-                    force = gravitational_force([y0[2*i], y0[2*i+1]], masses[i], [y0[2*j], y0[2*j+1]], masses[j])
-                    print(force)
+                    force = gravitational_force([y0[2*i], y0[2*i+1]], masses[i], [y0[2*j], y0[2*j+1]], masses[j])                
                     forceX = force[0]
                     sommeX = sommeX + forceX
                     forceY = force[1]
