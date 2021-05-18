@@ -36,9 +36,9 @@ class DummySolver(ISolver):
         self.max_step_size = max_step_size
 
     def integrate(self, t):
-        n=floor((t-self.t0)/self.max_step_size)
+        n=(t-self.t0)//self.max_step_size
         s=0
-        for i in range(n-1):
+        for i in range(n+1):
             s= s + self.max_step_size * self.f(self.t0+i*self.max_step_size, self.y0)
-        s=s + self.max_step_size * self.f(t, self.y0)
+        s=s + (t-n*self.max_step_size-self.t0) * self.f(t, self.y0)
         return s
