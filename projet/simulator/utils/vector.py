@@ -128,7 +128,7 @@ class Vector:
     # endregion
 
 
-class Vector2(Vector):
+class Vector2(Vector): #vecteur de dimension 2 dans le plan
     def __init__(self, x=0, y=0):
         super().__init__(2)
         self[0] = x

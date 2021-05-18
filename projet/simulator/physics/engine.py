@@ -51,9 +51,10 @@ class DummyEngine(IEngine):
         masses=[]
         n=len(y0)//4
         for i in range (n) :
-            for body in self.world.bodies() : 
-                if (y0[2*i]==body.position[0]) and (y0[2*i+1]==body.position[1]):
-                    masses.append(body.mass)
+#            for body in self.world.bodies() : 
+#                if (y0[2*i]==body.position[0]) and (y0[2*i+1]==body.position[1]):
+#                    masses.append(body.mass)
+            masses.append(self.world.get(i).mass)
                     
         res=[]
         for i in range (2*n):
@@ -73,14 +74,15 @@ class DummyEngine(IEngine):
         return(res)
         
     def make_solver_state(self):
-       y0=[]
-       for body in self.world.bodies() :
-           y0.append(body.position[0])
-           y0.append(body.position[1])
-       for body in self.world.bodies() :
-           y0.append(body.velocity[0])
-           y0.append(body.velocity[1])
-       return y0
-   
-    
-        
+#       y0=[]
+#       for body in self.world.bodies() :
+#           y0.append(body.position[0])
+#           y0.append(body.position[1])
+#       for body in self.world.bodies() :
+#           y0.append(body.velocity[0])
+#           y0.append(body.velocity[1])
+#       return y0
+        y0=Vector(4*self.world.__len__())
+        for i in range (self.world.__len__()) :
+            value0=self.world.get(i).position[0]
+            y0.__setitem__(i,value0)
