@@ -51,8 +51,6 @@ class DummyEngine(IEngine):
         #récupération des masses
         masses=[]
         n=len(y0)//4
-        print(y0)
-        print(n)
         for i in range (n) :
 #            for body in self.world.bodies() : 
 #                if (y0[2*i]==body.position[0]) and (y0[2*i+1]==body.position[1]):
@@ -83,13 +81,13 @@ class DummyEngine(IEngine):
             sommeY=0
             for j in range(n):    #somme des forces extérieures
                 if i != j :
-                    force = gravitational_force([y0[2*i], y0[2*i+1]], masses[i], [y0[2*j], y0[2*j+1]], masses[j])                
+                    force = gravitational_force(Vector2(y0[2*i], y0[2*i+1]), masses[i], Vector2(y0[2*j], y0[2*j+1]), masses[j])                
                     forceX = force[0]
                     sommeX = sommeX + forceX
                     forceY = force[1]
                     sommeY = sommeY + forceY
-            res[2*n+2*i]=sommeX / masses[i]
-            res[2*n+2*i+1]=sommeX / masses[i]
+            res[2*n+2*i] = sommeX / masses[i]
+            res[2*n+2*i+1] = sommeX / masses[i]
         
         return(res)
         
