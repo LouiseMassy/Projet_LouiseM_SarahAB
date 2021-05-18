@@ -1,4 +1,6 @@
+from ..utils.vector import Vector, Vector2
 import math as m
+
 class SolverError(Exception):
     pass
 
@@ -37,8 +39,17 @@ class DummySolver(ISolver):
 
     def integrate(self, t):
         n=m.floor((t-self.t0)/self.max_step_size)
-        s=0
-        for i in range(n+1):
-            s= s + self.max_step_size * self.f(self.t0+i*self.max_step_size, self.y0)
-        s=s + (t-n*self.max_step_size-self.t0) * self.f(t, self.y0)
+        # s=0
+        # for i in range(n+1):
+        #     s= s + self.max_step_size * self.f(self.t0+i*self.max_step_size, self.y0)
+        # s=s + (t-n*self.max_step_size-self.t0) * self.f(t, self.y0)
+        # 
+        #s=Vector(len(self.y0))
+        s = self.y0 + self.max_step_size * self.f(self.t0, self.y0)
+        for i in range(1, n+1):    
+            s = s + self.max_step_size * self.f(self.t0+i*self.max_step_size, s)
+        s = s + (t-n*self.max_step_size-self.t0) * self.f(t, s)
+        
+        self.t0 = t
+        self.y0 = s
         return s
