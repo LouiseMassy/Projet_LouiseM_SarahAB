@@ -23,7 +23,7 @@ class Vector:
     def __repr__(self):
         return self.__str__()
 
-    def __len__(self):
+    def __len__(self):      #tirets du bas impliquent méthodes magiques, il faut juste appeler len
         return self.dim
 
     def __getitem__(self, key):

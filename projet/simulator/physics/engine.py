@@ -50,6 +50,7 @@ class DummyEngine(IEngine):
         #récupération des masses
         masses=[]
         n=len(y0)//4
+
         for i in range (n) :
 #            for body in self.world.bodies() : 
 #                if (y0[2*i]==body.position[0]) and (y0[2*i+1]==body.position[1]):
@@ -74,7 +75,7 @@ class DummyEngine(IEngine):
             
             res = Vector(4*n)
             for i in range (2*n):
-                res.__setitem__(i,y0[2*n+i])
+                res[i]=y0[2*n+i]
             for i in range (n):
                 sommeX=0
                 sommeY=0
@@ -85,8 +86,8 @@ class DummyEngine(IEngine):
                         sommeX = sommeX + forceX
                         forceY = force[1]
                         sommeY = sommeY + forceY
-                res.__setitem__(2*n+2*i,sommeX / masses[i])
-                res.__setitem__(2*n+2*i+1,sommeX / masses[i])
+                res[2*n+2*i]=sommeX / masses[i]
+                res[2*n+2*i+1]=sommeX / masses[i]
         
         return(res)
         
@@ -103,11 +104,13 @@ class DummyEngine(IEngine):
         y0=Vector(4*n)
         for i in range (n) :
             value0=self.world.get(i).position[0]
-            y0.__setitem__(2*i,value0)
+            y0[2*i]=value0
             value1=self.world.get(i).position[1]
-            y0.__setitem__(2*i+1,value1)
+            y0[2*i+1]=value1
         for i in range (n) :
             value0=self.world.get(i).velocity[0]
-            y0.__setitem__(2*i+2*n,value0)
+            y0[2*i+2*n]=value0
             value1=self.world.get(i).velocity[1]
-            y0.__setitem__(2*i+1+2*n,value1)
+            y0[2*i+1+2*n] = value1
+        
+        return(y0)

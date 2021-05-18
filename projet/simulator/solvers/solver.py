@@ -1,4 +1,4 @@
-from math import *
+import math as m
 class SolverError(Exception):
     pass
 
@@ -36,7 +36,7 @@ class DummySolver(ISolver):
         self.max_step_size = max_step_size
 
     def integrate(self, t):
-        n=(t-self.t0)//self.max_step_size
+        n=m.floor((t-self.t0)/self.max_step_size)
         s=0
         for i in range(n+1):
             s= s + self.max_step_size * self.f(self.t0+i*self.max_step_size, self.y0)
