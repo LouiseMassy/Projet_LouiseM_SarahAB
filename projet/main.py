@@ -14,12 +14,12 @@ if __name__ == "__main__":
     b1 = Body(Vector2(0, 0),
               velocity=Vector2(0, 0),
               mass=10,
-              color=(255, 255, 255),
+              color=(64,224,208),
               draw_radius=10)
     b2 = Body(Vector2(1, 1),
               velocity=Vector2(0, 0.2),
               mass=1,
-              color=(255, 255, 150),
+              color=(240,128,128),
               draw_radius=5)
 
     world = World()
