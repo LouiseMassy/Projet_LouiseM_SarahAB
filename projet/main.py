@@ -28,8 +28,8 @@ if __name__ == "__main__":
     screen = Screen(screen_size,
                     bg_color=(0, 0, 0),
                     caption="Simulator")
-    screen.camera.scale = 10    #pas trop grand sinon on ne voit pas les deux particules
-
+    screen.camera.scale = 70    #pas trop grand sinon on ne voit pas les deux particules
+                                #autour de 10 pour DummySolv, 50 pour KuttaSolve
     # this coefficient controls the speed
     # of the simulation
     time_scale = 10
