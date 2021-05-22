@@ -5,6 +5,8 @@ from simulator.utils.vector import Vector2
 from simulator.solvers import DummySolver, KuttaSolver
 from simulator.physics.engine import DummyEngine
 from simulator.graphics import Screen
+import random
+
 
 import pygame as pg
 
@@ -12,10 +14,12 @@ if __name__ == "__main__":
     b1 = Body(Vector2(0, 0),
               velocity=Vector2(0, 0),
               mass=10,
+              color=(255, 255, 255),
               draw_radius=10)
     b2 = Body(Vector2(1, 1),
               velocity=Vector2(0, 0.2),
               mass=1,
+              color=(255, 255, 150),
               draw_radius=5)
 
     world = World()
@@ -40,10 +44,6 @@ if __name__ == "__main__":
     while not screen.should_quit:
         dt = screen.tick(60)
 
-        # simulate physics
-        delta_time = time_scale * dt / 1000
-        simulator.step(delta_time)
-
         # read events
         screen.get_events()
 
@@ -53,6 +53,21 @@ if __name__ == "__main__":
             screen.camera.scale *= 1.1
         elif screen.get_wheel_down():
             screen.camera.scale *= 0.9
+        
+        # ajout d'un corps dans le world
+        if screen.get_right_mouse():
+            b = Body(Vector2(random.randint(0,10), random.randint(0,10)),
+              velocity=Vector2(random.uniform(0.0,0.5), random.uniform(0.0,0.5)),
+              mass=random.randint(0,10),
+              color=(random.randint(0,255), random.randint(0,255), random.randint(0,255)),
+              draw_radius=random.randint (0,20))
+            
+            world.add(b)
+            simulator = Simulator(world, DummyEngine, ChoixSolver)
+            
+        # simulate physics
+        delta_time = time_scale * dt / 1000
+        simulator.step(delta_time)
 
         # draw current state
         screen.draw(world)
