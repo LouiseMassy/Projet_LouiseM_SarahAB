@@ -28,7 +28,7 @@ if __name__ == "__main__":
     screen = Screen(screen_size,
                     bg_color=(0, 0, 0),
                     caption="Simulator")
-    screen.camera.scale = 50
+    screen.camera.scale = 10    #pas trop grand sinon on ne voit pas les deux particules
 
     # this coefficient controls the speed
     # of the simulation
