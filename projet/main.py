@@ -2,7 +2,7 @@
 
 from simulator import Simulator, World, Body
 from simulator.utils.vector import Vector2
-from simulator.solvers import DummySolver
+from simulator.solvers import DummySolver, KuttaSolver
 from simulator.physics.engine import DummyEngine
 from simulator.graphics import Screen
 
@@ -22,14 +22,16 @@ if __name__ == "__main__":
     world.add(b1)
     world.add(b2)
 
-    simulator = Simulator(world, DummyEngine, DummySolver)
+    ChoixSolver = KuttaSolver    #choix du solveur : Dummy ou Kutta  
+
+    simulator = Simulator(world, DummyEngine, ChoixSolver)
 
     screen_size = Vector2(800, 600)
     screen = Screen(screen_size,
                     bg_color=(0, 0, 0),
                     caption="Simulator")
-    screen.camera.scale = 70    #pas trop grand sinon on ne voit pas les deux particules
-                                #autour de 10 pour DummySolv, 50 pour KuttaSolve
+    screen.camera.scale = 10    #pas trop grand sinon on ne voit pas les deux particules
+                                #autour de 10
     # this coefficient controls the speed
     # of the simulation
     time_scale = 10
