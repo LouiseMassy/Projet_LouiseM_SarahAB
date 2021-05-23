@@ -18,7 +18,7 @@ if __name__ == "__main__":
               draw_radius=10)
     b2 = Body(Vector2(1, 1),
               velocity=Vector2(0, 0.2),
-              mass=1,
+              mass=5,
               color=(240,128,128),
               draw_radius=5)
 
@@ -43,6 +43,10 @@ if __name__ == "__main__":
     print("Start program")
     while not screen.should_quit:
         dt = screen.tick(60)
+        
+        # simulate physics
+        delta_time = time_scale * dt / 1000
+        simulator.step(delta_time)
 
         # read events
         screen.get_events()
@@ -64,10 +68,6 @@ if __name__ == "__main__":
             
             world.add(b)
             simulator = Simulator(world, DummyEngine, ChoixSolver)
-            
-        # simulate physics
-        delta_time = time_scale * dt / 1000
-        simulator.step(delta_time)
 
         # draw current state
         screen.draw(world)
