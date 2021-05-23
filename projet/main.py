@@ -62,9 +62,10 @@ if __name__ == "__main__":
         if screen.get_right_mouse():
             b = Body(Vector2(random.randint(0,10), random.randint(0,10)),
               velocity=Vector2(random.uniform(0.0,0.5), random.uniform(0.0,0.5)),
-              mass=random.randint(0,10),
+              mass=random.randint(1,10),
               color=(random.randint(0,255), random.randint(0,255), random.randint(0,255)),
-              draw_radius=random.randint (0,20))
+              )
+            b.draw_radius=b.mass
             
             world.add(b)
             simulator = Simulator(world, DummyEngine, ChoixSolver)
