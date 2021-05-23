@@ -74,7 +74,7 @@ if __name__ == "__main__":
 
         # draw additional stuff
         screen.draw_corner_text("Time: %f" % simulator.t)
-
+        
         # show new state
         screen.update()
 
