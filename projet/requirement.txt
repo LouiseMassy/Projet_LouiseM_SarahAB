@@ -1,0 +1,4 @@
+sudo apt-get install python3-pip
+python3 -m pip install numpy
+python3 -m pip install math
+python3 -m pip install pygame

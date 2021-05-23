@@ -11,7 +11,6 @@ def gravitational_force(pos1, mass1, pos2, mass2):
     norme = Vector.norm(Vector.__sub__(pos1,pos2))
     vecteur_directeur=Vector2((pos2[0]-pos1[0])/norme,(pos2[1]-pos1[1])/norme)
     return Vector2(normeF*vecteur_directeur[0],normeF*vecteur_directeur[1])
-    #raise NotImplementedError
 
 
 class IEngine:                  #SQUELETTE
@@ -52,26 +51,7 @@ class DummyEngine(IEngine):
         masses=[]
         n=len(y0)//4
         for i in range (n) :
-#            for body in self.world.bodies() : 
-#                if (y0[2*i]==body.position[0]) and (y0[2*i+1]==body.position[1]):
-#                    masses.append(body.mass)
             masses.append(self.world.get(i).mass)
-                    
-#        res=[]
-#        for i in range (2*n):
-#            res.append(y0[2*n+i])
-#        for i in range (n):   #on calcule les accélérations ai
-#            sommeX=0
-#            sommeY=0
-#            for j in range(n):    #somme des forces extérieures
-#                if i != j :
-#                    force = gravitational_force([y0[2*i], y0[2*i+1]], masses[i], [y0[2*j], y0[2*j+1]], masses[j])
-#                    forceX = force[0]
-#                    sommeX = sommeX + forceX
-#                    forceY = force[1]
-#                    sommeY = sommeY + forceY
-#            res.append(sommeX / masses[i])
-#            res.append(sommeY / masses[i])
             
         res = Vector(4*n)
         for i in range (2*n):
@@ -92,14 +72,6 @@ class DummyEngine(IEngine):
         return(res)
         
     def make_solver_state(self):
-#       y0=[]
-#       for body in self.world.bodies() :
-#           y0.append(body.position[0])
-#           y0.append(body.position[1])
-#       for body in self.world.bodies() :
-#           y0.append(body.velocity[0])
-#           y0.append(body.velocity[1])
-#       return y0
         n=self.world.__len__()
         y0=Vector(4*n)
         for i in range (n) :
