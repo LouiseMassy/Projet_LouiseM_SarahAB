@@ -6,13 +6,12 @@ def gravitational_force(pos1, mass1, pos2, mass2):
     """ Return the force applied to a bodyVector in pos1 with mass1
         by a body in pos2 with mass2
     """
-#    norme_carre = Vector.sqrnorm(Vector.__sub__(pos1,pos2))
-#    normeF=G*mass1*mass2/norme_carre
-#    norme = Vector.norm(Vector.__sub__(pos1,pos2))
-#    vecteur_directeur=Vector2((pos1[0]-pos2[0])/norme,(pos1[1]-pos2[1])/norme)
-#    return Vector2(normeF*vecteur_directeur[0],normeF*vecteur_directeur[1])
-    r=Vector.norm(pos1-pos2)
-    F= -(G*mass2*mass1/(r*r*r))*(pos1-pos2)
+    norme_carre = Vector.sqrnorm(Vector.__sub__(pos1,pos2))
+    normeF=G*mass1*mass2/norme_carre
+    norme = Vector.norm(Vector.__sub__(pos1,pos2))
+    vecteur_directeur=Vector2((pos2[0]-pos1[0])/norme,(pos2[1]-pos1[1])/norme)
+    return Vector2(normeF*vecteur_directeur[0],normeF*vecteur_directeur[1])
+    
     return F
 
 
@@ -65,10 +64,8 @@ class DummyEngine(IEngine):
             for j in range(n):    #somme des forces extérieures
                 if i != j :
                     force = gravitational_force(Vector2(y0[2*i], y0[2*i+1]), masses[i], Vector2(y0[2*j], y0[2*j+1]), masses[j])                
-                    forceX = force[0]
-                    sommeX = sommeX + forceX
-                    forceY = force[1]
-                    sommeY = sommeY + forceY
+                    sommeX = sommeX + Vector2.get_x(force)
+                    sommeY = sommeY + Vector2.get_y(force)
             res[2*n+2*i] = sommeX /masses[i]
             res[2*n+2*i+1] = sommeY /masses[i]
         
