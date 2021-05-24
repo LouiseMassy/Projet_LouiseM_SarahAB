@@ -11,8 +11,7 @@ def gravitational_force(pos1, mass1, pos2, mass2):
     norme = Vector.norm(Vector.__sub__(pos1,pos2))
     vecteur_directeur=Vector2((pos2[0]-pos1[0])/norme,(pos2[1]-pos1[1])/norme)
     return Vector2(normeF*vecteur_directeur[0],normeF*vecteur_directeur[1])
-    
-    return F
+
 
 
 class IEngine:                  #SQUELETTE
@@ -64,8 +63,8 @@ class DummyEngine(IEngine):
             for j in range(n):    #somme des forces extérieures
                 if i != j :
                     force = gravitational_force(Vector2(y0[2*i], y0[2*i+1]), masses[i], Vector2(y0[2*j], y0[2*j+1]), masses[j])                
-                    sommeX = sommeX + Vector2.get_x(force)
-                    sommeY = sommeY + Vector2.get_y(force)
+                    sommeX = sommeX + force.get_x()
+                    sommeY = sommeY + force.get_y()
             res[2*n+2*i] = sommeX /masses[i]
             res[2*n+2*i+1] = sommeY /masses[i]
         
@@ -80,9 +79,9 @@ class DummyEngine(IEngine):
             value1=self.world.get(i).position[1]
             y0[2*i+1]=value1
         for i in range (n) :
-            value0=self.world.get(i).velocity[0]
-            y0[2*i+2*n]=value0
-            value1=self.world.get(i).velocity[1]
-            y0[2*i+1+2*n] = value1
+            value2=self.world.get(i).velocity[0]
+            y0[2*i+2*n]=value2
+            value3=self.world.get(i).velocity[1]
+            y0[2*i+1+2*n] = value3
         
         return(y0)

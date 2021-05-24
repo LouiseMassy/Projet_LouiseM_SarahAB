@@ -8,7 +8,6 @@ from simulator.graphics import Screen
 import random
 
 
-import pygame as pg
 
 if __name__ == "__main__":
     b1 = Body(Vector2(0, 0),
@@ -17,16 +16,22 @@ if __name__ == "__main__":
               color=(255,255,255),
               draw_radius=10)
     b2 = Body(Vector2(3, 1),
-              velocity=Vector2(0, 0.2),
+              velocity=Vector2(0, 0.3),
               mass=5,
               color=(240,128,128),
               draw_radius=5)
+    b3 = Body(Vector2(5, 2),
+              velocity=Vector2(0, 0.2),
+              mass=7,
+              color=(128,128,128),
+              draw_radius=7)
 
     world = World()
     world.add(b1)
     world.add(b2)
+    world.add(b3)
 
-    ChoixSolver = KuttaSolver    #choix du solveur : Dummy ou Kutta  
+    ChoixSolver = DummySolver    #choix du solveur : Dummy ou Kutta  
 
     simulator = Simulator(world, DummyEngine, ChoixSolver)
 
@@ -69,8 +74,8 @@ if __name__ == "__main__":
               )
             b.draw_radius=b.mass
             world.add(b)
+            print(len(world))
             
-            simulator = Simulator(world, DummyEngine, ChoixSolver)
             
 
         # draw current state
