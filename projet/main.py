@@ -70,6 +70,7 @@ if __name__ == "__main__":
               )
             b.draw_radius=b.mass
             world.add(b)
+            print(len(world))
             simulator=Simulator(world,DummyEngine,ChoixSolver)
 #            
 
