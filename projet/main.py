@@ -15,7 +15,7 @@ if __name__ == "__main__":
               mass=10,
               color=(255,255,255),
               draw_radius=10)
-    b2 = Body(Vector2(4, 1),
+    b2 = Body(Vector2(1, 1),
               velocity=Vector2(0, 0.2),
               mass=5,
               color=(240,128,128),
