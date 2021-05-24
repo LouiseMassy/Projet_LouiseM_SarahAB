@@ -25,6 +25,7 @@ if __name__ == "__main__":
     world.add(b1)
     world.add(b2)
 
+    listbodies = [b1, b2]
 
     ChoixSolver = KuttaSolver    #choix du solveur : Dummy ou Kutta  
 
@@ -63,14 +64,18 @@ if __name__ == "__main__":
         
         # ajout d'un corps dans le world
         if screen.get_right_mouse():
-            b = Body(Vector2(random.randint(0,10), random.randint(0,10)),
+            b = Body(Vector2(random.randint(0,5), random.randint(0,5)),
               velocity=Vector2(random.uniform(0.0,0.2), random.uniform(0.0,0.2)),
               mass=random.randint(1,10),
               color=(random.randint(0,255), random.randint(0,255), random.randint(0,255)),
               )
             b.draw_radius=b.mass
-            world.add(b)
-            print(len(world))
+            
+            listbodies.append(b)
+
+            world = World()
+            for bdy in listbodies :
+              world.add(bdy)
             simulator=Simulator(world,DummyEngine,ChoixSolver)
 #            
 
