@@ -65,7 +65,7 @@ if __name__ == "__main__":
         # ajout d'un corps dans le world
         if screen.get_right_mouse():
             b = Body(Vector2(random.randint(0,5), random.randint(0,5)),
-              velocity=Vector2(random.uniform(0.0,0.2), random.uniform(0.0,0.2)),
+              velocity=Vector2(0, random.uniform(0.0,0.2)),
               mass=random.randint(1,10),
               color=(random.randint(0,255), random.randint(0,255), random.randint(0,255)),
               )
