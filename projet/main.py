@@ -16,7 +16,7 @@ if __name__ == "__main__":
               mass=10,
               color=(255,255,255),
               draw_radius=10)
-    b2 = Body(Vector2(1, 1),
+    b2 = Body(Vector2(3, 1),
               velocity=Vector2(0, 0.2),
               mass=5,
               color=(240,128,128),
@@ -44,6 +44,7 @@ if __name__ == "__main__":
     while not screen.should_quit:
         dt = screen.tick(60)
         
+    
         # simulate physics
         delta_time = time_scale * dt / 1000
         simulator.step(delta_time)
@@ -58,6 +59,7 @@ if __name__ == "__main__":
         elif screen.get_wheel_down():
             screen.camera.scale *= 0.9
         
+        
         # ajout d'un corps dans le world
         if screen.get_right_mouse():
             b = Body(Vector2(random.randint(0,10), random.randint(0,10)),
@@ -66,9 +68,10 @@ if __name__ == "__main__":
               color=(random.randint(0,255), random.randint(0,255), random.randint(0,255)),
               )
             b.draw_radius=b.mass
-            
             world.add(b)
+            
             simulator = Simulator(world, DummyEngine, ChoixSolver)
+            
 
         # draw current state
         screen.draw(world)
