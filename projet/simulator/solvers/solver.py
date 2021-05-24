@@ -38,29 +38,16 @@ class DummySolver(ISolver):
         self.max_step_size = max_step_size
 
     def integrate(self, t):
-#        n=m.floor((t-self.t0)/self.max_step_size)
-#        s = self.y0 + self.max_step_size * self.f(self.t0, self.y0)
-#        for i in range(1, n+1):    
-#            s = s + self.max_step_size * self.f(self.t0+i*self.max_step_size, s)
-#        s = s + (t-n*self.max_step_size-self.t0) * self.f(t, s)
-#        
-#        self.t0 = t
-#        self.y0 = s
-#        return s
+        n=m.floor((t-self.t0)/self.max_step_size)
+        s = self.y0 + self.max_step_size * self.f(self.t0, self.y0)
+        for i in range(1, n+1):    
+            s = s + self.max_step_size * self.f(self.t0+i*self.max_step_size, s)
+        s = s + (t-n*self.max_step_size-self.t0) * self.f(t, s)
         
-        h = self.max_step_size
-        n=(t-self.t0)//(h+1)
-        if(n==0):
-             pas_fix=t-self.t0
-        else:
-            pas_fix=(t-self.t0)/n
+        self.t0 = t
+        self.y0 = s
+        return s
 
-        while(self.t0<t):
-            y =self.f(self.t0,self.y0)
-            for k in range (len(self.y0)):       
-                self.y0[k] += y[k] * pas_fix 
-                self.t0 += pas_fix
-        return self.y0
     
 "MÉTHODE DE RUNGE-KUTTA D'ORDRE 4"
 class KuttaSolver(ISolver):

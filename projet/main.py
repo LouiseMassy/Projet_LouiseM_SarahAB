@@ -15,23 +15,18 @@ if __name__ == "__main__":
               mass=10,
               color=(255,255,255),
               draw_radius=10)
-    b2 = Body(Vector2(3, 1),
-              velocity=Vector2(0, 0.3),
+    b2 = Body(Vector2(1, 1),
+              velocity=Vector2(0, 0.2),
               mass=5,
               color=(240,128,128),
               draw_radius=5)
-    b3 = Body(Vector2(5, 2),
-              velocity=Vector2(0, 0.2),
-              mass=7,
-              color=(128,128,128),
-              draw_radius=7)
 
     world = World()
     world.add(b1)
     world.add(b2)
-    world.add(b3)
 
-    ChoixSolver = DummySolver    #choix du solveur : Dummy ou Kutta  
+
+    ChoixSolver = KuttaSolver    #choix du solveur : Dummy ou Kutta  
 
     simulator = Simulator(world, DummyEngine, ChoixSolver)
 
@@ -48,6 +43,7 @@ if __name__ == "__main__":
     print("Start program")
     while not screen.should_quit:
         dt = screen.tick(60)
+        
         
     
         # simulate physics
@@ -68,15 +64,14 @@ if __name__ == "__main__":
         # ajout d'un corps dans le world
         if screen.get_right_mouse():
             b = Body(Vector2(random.randint(0,10), random.randint(0,10)),
-              velocity=Vector2(random.uniform(0.0,0.5), random.uniform(0.0,0.5)),
+              velocity=Vector2(random.uniform(0.0,0.2), random.uniform(0.0,0.2)),
               mass=random.randint(1,10),
               color=(random.randint(0,255), random.randint(0,255), random.randint(0,255)),
               )
             b.draw_radius=b.mass
             world.add(b)
-            print(len(world))
-            
-            
+            simulator=Simulator(world,DummyEngine,ChoixSolver)
+#            
 
         # draw current state
         screen.draw(world)
